@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class GridItemWidget extends StatelessWidget {
   final int index;
@@ -12,15 +13,19 @@ class GridItemWidget extends StatelessWidget {
         color: Colors.pinkAccent,
         borderRadius: BorderRadius.circular(12),
       ),
-      clipBehavior: Clip.antiAlias, // Evita que a imagem vaze das bordas arredondadas
+      clipBehavior: Clip.antiAlias,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
-            child: Image.network(
-              'https://picsum.photos/800/600?random=$index',
-              cacheWidth: 400,
+            child: CachedNetworkImage(
+              imageUrl: 'https://picsum.photos/800/600?random=$index',
+              memCacheWidth: 400,
               fit: BoxFit.cover,
+              placeholder: (context, url) => const Center(
+                child: CircularProgressIndicator(),
+              ),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
           ),
           Container(

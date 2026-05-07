@@ -12,6 +12,8 @@ class GridPage extends StatelessWidget {
       appBar: const HeaderWidget(title: 'BOM — GridView.builder'),
       body: GridView.builder(
         padding: const EdgeInsets.all(8),
+        addAutomaticKeepAlives: false,
+        addRepaintBoundaries: false,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           crossAxisSpacing: 8,

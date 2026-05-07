@@ -12,6 +12,9 @@ class ListPage extends StatelessWidget {
       appBar: const HeaderWidget(title: 'BOM — ListView.builder'),
       body: ListView.builder(
         itemCount: 200,
+        itemExtent: 300, 
+        addAutomaticKeepAlives: false,
+        addRepaintBoundaries: false,
         itemBuilder: (context, index) {
           return ListItemWidget(index: index);
         },
